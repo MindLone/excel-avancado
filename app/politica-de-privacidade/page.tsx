@@ -1,0 +1,21 @@
+import type { Metadata } from "next";
+import { LegalPage } from "../legal";
+
+export const metadata: Metadata = { title: "Política de Privacidade | Excel Avançado", description: "Saiba como o Excel Avançado trata os dados pessoais de visitantes e compradores." };
+
+const sections = [
+  { title: "Quem trata os seus dados", paragraphs: ["O Excel Avançado é responsável pelo tratamento dos dados pessoais relacionados a esta página, ao acesso ao treinamento e ao atendimento do comprador. O pagamento e parte do cadastro podem ser processados pela plataforma de checkout indicada no momento da compra."] },
+  { title: "Dados que podem ser coletados", paragraphs: ["Podemos receber dados fornecidos por você no checkout, no atendimento ou na área de membros, além de informações técnicas necessárias para o funcionamento e a segurança do site."], items: ["Nome, e-mail e dados de identificação informados na compra.", "Informações do pedido, status do pagamento e histórico de acesso.", "Mensagens enviadas ao suporte e registros necessários para resolver solicitações.", "Dados técnicos, como endereço IP, dispositivo, navegador e páginas acessadas."] },
+  { title: "Como usamos os dados", items: ["Processar a compra e liberar o acesso ao curso.", "Enviar comunicações transacionais, como confirmação e instruções de acesso.", "Prestar suporte técnico e responder solicitações.", "Prevenir fraude, abuso e compartilhamento indevido de acesso.", "Cumprir obrigações legais, fiscais e regulatórias.", "Melhorar a segurança, o desempenho e a experiência do site."] },
+  { title: "Bases legais", paragraphs: ["O tratamento ocorre conforme a Lei Geral de Proteção de Dados (Lei nº 13.709/2018), com base na execução do contrato, cumprimento de obrigação legal, exercício regular de direitos, legítimo interesse ou consentimento, quando aplicável."] },
+  { title: "Compartilhamento", paragraphs: ["Os dados podem ser compartilhados somente quando necessário com a plataforma de pagamento e área de membros, provedores de hospedagem, ferramentas de comunicação, prestadores de suporte e autoridades competentes. Esses terceiros recebem apenas as informações necessárias para suas finalidades.", "Dados completos de cartão e outros meios de pagamento são tratados pelo provedor de pagamento e não ficam armazenados por esta página."] },
+  { title: "Cookies e tecnologias semelhantes", paragraphs: ["O site pode utilizar cookies essenciais para funcionamento, segurança e preferências. Caso ferramentas de análise ou publicidade sejam adicionadas, esta política poderá ser atualizada e o consentimento será solicitado quando exigido."] },
+  { title: "Prazo de armazenamento", paragraphs: ["Os dados são mantidos pelo tempo necessário para disponibilizar o produto, atender o comprador, cumprir obrigações legais e proteger direitos. Depois desse período, serão eliminados ou anonimizados quando possível."] },
+  { title: "Segurança", paragraphs: ["Adotamos medidas técnicas e organizacionais razoáveis para proteger os dados contra acesso não autorizado, perda, alteração ou divulgação indevida. Nenhum sistema, contudo, é completamente imune a incidentes."] },
+  { title: "Seus direitos", paragraphs: ["Você pode solicitar confirmação de tratamento, acesso, correção, portabilidade, anonimização, bloqueio, exclusão, informação sobre compartilhamentos e revisão de consentimento, conforme os limites previstos na LGPD."], items: ["A solicitação pode ser feita pelo canal de suporte informado no checkout e na área de membros.", "Poderemos pedir informações adicionais para confirmar a identidade do titular antes de atender ao pedido."] },
+  { title: "Alterações e contato", paragraphs: ["Esta política pode ser atualizada para refletir mudanças no site, no produto ou na legislação. A versão vigente ficará publicada nesta página com a data da última atualização.", "Para dúvidas sobre privacidade, utilize o canal de suporte exibido no checkout ou dentro da área de membros do Excel Avançado."] },
+];
+
+export default function PrivacyPage() {
+  return <LegalPage eyebrow="PRIVACIDADE E PROTEÇÃO DE DADOS" title="Política de Privacidade" intro="Esta política explica, em linguagem clara, quais dados podem ser coletados e como eles são utilizados na experiência do Excel Avançado." sections={sections} />;
+}

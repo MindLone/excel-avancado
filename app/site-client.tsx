@@ -168,7 +168,7 @@ export function LandingPage() {
             <button className="video-card" type="button" onClick={() => setVideoOpen(true)} aria-label="Abrir espaço do vídeo de apresentação">
               <img src="/assets/area-de-membros.webp" alt="Prévia da área de membros do Excel Avançado" />
               <span className="video-vignette" /><span className="play-button"><PlayIcon /></span>
-              <span className="video-caption"><strong>Conheça o treinamento por dentro</strong><small>Assista à apresentação</small></span>
+              <span className="video-caption"></span>
             </button>
             <div className="video-foot"><span><i /> Conteúdo organizado</span><span>Vídeo rápido</span></div>
           </div>

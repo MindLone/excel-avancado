@@ -19,7 +19,7 @@ function CheckIcon() {
 }
 
 const benefits = [
-  ["Online", "estude no seu ritmo"],
+  ["Completo", "8 módulos com mais de 70 aulas"],
   ["Do zero", "ao avançado"],
   ["Na prática", "exercícios guiados"],
   ["Acesso", "celular ou computador"],

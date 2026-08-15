@@ -123,8 +123,8 @@ h1, h2, p { margin-top: 0; }
 .hero h1 {
   max-width: 720px;
   margin-bottom: 24px;
-  font-size: clamp(48px, 5vw, 72px);
-  line-height: .99;
+  font-size: clamp(42px, 4.2vw, 60px);
+  line-height: 1.02;
   letter-spacing: -.055em;
   font-weight: 720;
 }
@@ -138,8 +138,8 @@ h1, h2, p { margin-top: 0; }
   max-width: 650px;
   margin-bottom: 32px;
   color: var(--muted);
-  font-size: 18px;
-  line-height: 1.65;
+  font-size: 16px;
+  line-height: 1.6;
 }
 .hero-actions { display: flex; align-items: center; gap: 24px; }
 .primary-button {
@@ -389,7 +389,6 @@ h1, h2, p { margin-top: 0; }
 .final-cta { position: relative; overflow: hidden; padding: 130px 0; border-top: 1px solid var(--line); background: radial-gradient(circle at 50% 50%, rgba(4,172,76,.15), transparent 35%), #030605; text-align: center; }
 .final-grid { position: absolute; inset: 0; opacity: .22; background-image: linear-gradient(rgba(77,255,143,.11) 1px, transparent 1px), linear-gradient(90deg, rgba(77,255,143,.1) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(circle, black, transparent 68%); }
 .final-cta .shell { position: relative; z-index: 1; display: flex; align-items: center; flex-direction: column; }
-.final-cta img { width: 190px; margin-bottom: 36px; }
 .final-cta p { margin-bottom: 17px; color: #4fe486; font-family: var(--font-geist-mono), monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
 .final-cta h2 { max-width: 900px; margin-bottom: 34px; font-size: clamp(43px, 5.6vw, 76px); line-height: .98; letter-spacing: -.055em; }
 .final-cta > .shell > small { margin-top: 20px; color: #718078; font-size: 11px; }
@@ -458,8 +457,8 @@ h1, h2, p { margin-top: 0; }
   .site-header { top: 10px; height: 60px; padding-left: 14px; }
   .brand img { width: 148px; }
   .hero { min-height: auto; padding: 112px 0 62px; }
-  .hero h1 { font-size: clamp(42px, 13vw, 58px); line-height: 1.01; }
-  .hero-lead { font-size: 16px; line-height: 1.65; }
+  .hero h1 { font-size: clamp(36px, 10.5vw, 48px); line-height: 1.04; }
+  .hero-lead { font-size: 15px; line-height: 1.6; }
   .hero-actions { align-items: stretch; flex-direction: column; gap: 16px; }
   .primary-button { width: 100%; }
   .text-link { align-self: center; }

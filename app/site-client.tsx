@@ -19,10 +19,10 @@ function CheckIcon() {
 }
 
 const benefits = [
-  ["70+", "aulas em vídeo"],
+  ["Online", "estude no seu ritmo"],
   ["Do zero", "ao avançado"],
-  ["Apoio", "apostila + prática"],
-  ["Certificado", "digital de conclusão"],
+  ["Na prática", "exercícios guiados"],
+  ["Acesso", "celular ou computador"],
 ];
 
 const outcomes = [
@@ -54,20 +54,20 @@ const audience = [
 
 const offerItems = [
   "Curso completo do básico ao avançado",
-  "Mais de 70 aulas em vídeo",
-  "Apostila digital em PDF",
-  "Material prático de treinamento",
-  "Mais de 5 mil planilhas bônus editáveis",
-  "Certificado digital de conclusão",
+  "Aulas em vídeo organizadas por módulos",
+  "Apostila digital para consulta",
+  "Arquivos práticos de treinamento",
+  "Acervo de planilhas editáveis",
+  "Emissão do documento de conclusão",
 ];
 
 const faqs = [
   ["Preciso saber Excel antes de começar?", "Não. O treinamento começa pelos fundamentos e avança gradualmente até conteúdos mais completos."],
-  ["Quantas aulas o curso possui?", "O treinamento possui mais de 70 aulas, começando pelo essencial e avançando por diferentes recursos do Excel."],
+  ["Como o conteúdo está organizado?", "As aulas seguem uma sequência progressiva, começando pelo essencial e avançando por diferentes recursos do Excel."],
   ["Como vou receber o acesso?", "Após a confirmação da compra, as instruções de acesso serão enviadas para o e-mail usado no pagamento."],
   ["Posso assistir pelo celular?", "Sim. A área de membros pode ser acessada pelo celular ou pelo computador conectado à internet."],
-  ["O curso possui materiais para download?", "Sim. Você recebe apostila em PDF, material prático de treinamento e o acervo bônus de planilhas editáveis."],
-  ["As mais de 5 mil planilhas são exercícios?", "Não. Elas formam um acervo bônus de arquivos editáveis para explorar, adaptar e usar como referência. O material de treinamento é entregue separadamente."],
+  ["O curso possui arquivos para download?", "Sim. Você recebe apostila em PDF, arquivos para praticar e o acervo bônus de planilhas editáveis."],
+  ["As planilhas bônus são exercícios?", "Não. Elas formam um acervo de arquivos editáveis para explorar, adaptar e usar como referência. Os arquivos de treinamento são entregues separadamente."],
   ["Receberei certificado?", "Sim. Depois de concluir o treinamento e cumprir o período de liberação, você poderá emitir seu certificado digital de conclusão."],
   ["Como funciona a garantia?", "Você possui 7 dias para avaliar o conteúdo. Dentro desse prazo, pode solicitar o cancelamento conforme as condições apresentadas no checkout."],
 ];
@@ -152,14 +152,14 @@ export function LandingPage() {
         <div className="shell hero-grid">
           <div className="hero-copy">
             <p className="eyebrow"><span /> Curso online • do básico ao avançado</p>
-            <h1>Aprenda Excel do zero e avance até<span> fórmulas, dashboards e automações.</span></h1>
-            <p className="hero-lead">Um treinamento completo e passo a passo para você organizar dados, criar planilhas e usar os principais recursos do Excel com mais segurança — mesmo que esteja começando agora.</p>
+            <h1>Aprenda Excel do zero e<span> avance com segurança.</span></h1>
+            <p className="hero-lead">Domine planilhas, fórmulas, dashboards e automações em um treinamento online, organizado e passo a passo.</p>
             <div className="hero-actions">
               <a className="primary-button" href="#oferta">Quero começar agora <ArrowIcon /></a>
               <a className="text-link" href="#area-de-membros">Ver o curso por dentro</a>
             </div>
             <div className="hero-trust" aria-label="Informações da oferta">
-              <span>✓ Acesso online</span><span>✓ Certificado</span><span>✓ 7 dias de garantia</span>
+              <span>✓ Acesso online</span><span>✓ Estude no seu ritmo</span>
             </div>
           </div>
 
@@ -211,7 +211,7 @@ export function LandingPage() {
         <div className="curriculum-atmosphere" />
         <div className="shell">
           <div className="section-heading compact" data-reveal>
-            <div><p className="section-kicker">MAIS DE 70 AULAS</p><h2>Dos fundamentos a recursos mais avançados do Excel.</h2></div>
+            <div><p className="section-kicker">CONTEÚDO ORGANIZADO POR ETAPAS</p><h2>Dos fundamentos a recursos mais avançados do Excel.</h2></div>
             <p>Uma sequência progressiva para começar pelo essencial e avançar no seu ritmo, sem uma grade cansativa e confusa.</p>
           </div>
           <div className="topic-grid">
@@ -229,8 +229,7 @@ export function LandingPage() {
       <section className="materials section-pad" id="bonus">
         <div className="shell materials-grid">
           <div className="materials-visual" data-reveal>
-            <div className="portrait-frame"><img src="/assets/incluso-mobile.webp" alt="Visão dos conteúdos incluídos no Excel Avançado" /></div>
-            <div className="floating-note"><span>+5.000</span><small>planilhas bônus<br />editáveis</small></div>
+            <div className="portrait-frame"><img src="/assets/planilhas-bonus.webp" alt="Acervo com mais de cinco mil planilhas bônus editáveis" /></div>
           </div>
           <div className="materials-copy" data-reveal>
             <p className="section-kicker">MATERIAIS PARA APRENDER E PRATICAR</p>
@@ -256,7 +255,7 @@ export function LandingPage() {
           </div>
           <div className="members-device" data-reveal>
             <div className="browser-bar"><i /><i /><i /><span>Área de membros • Excel Avançado</span></div>
-            <img src="/assets/area-de-membros.webp" alt="Tela real da área de membros do curso Excel Avançado" />
+            <img src="/assets/area-de-membros-real.webp" alt="Tela real da área de membros do curso Excel Avançado" />
           </div>
         </div>
       </section>
@@ -265,11 +264,11 @@ export function LandingPage() {
         <div className="shell certificate-grid">
           <div className="certificate-copy" data-reveal>
             <p className="section-kicker">CONCLUSÃO RECONHECIDA</p>
-            <h2>Finalize o treinamento e emita seu certificado digital.</h2>
-            <p>Ao concluir o curso e cumprir o período de liberação, você poderá emitir um certificado de conclusão com o nome informado no cadastro.</p>
-            <div className="certificate-note"><span><CheckIcon /></span><p><strong>Certificado incluso</strong><small>Sem cobrança adicional na conclusão.</small></p></div>
+            <h2>Finalize o treinamento e registre sua conquista.</h2>
+            <p>Depois de concluir o curso e cumprir o período de liberação, você poderá emitir seu certificado digital com o nome informado no cadastro.</p>
+            <div className="certificate-note"><span><CheckIcon /></span><p><strong>Emissão inclusa</strong><small>Sem cobrança adicional na conclusão.</small></p></div>
           </div>
-          <div className="certificate-visual" data-reveal><div className="gold-glow" /><img src="/assets/certificado.webp" alt="Modelo do certificado de conclusão do Excel Avançado" /></div>
+          <div className="certificate-visual" data-reveal><div className="gold-glow" /><img src="/assets/certificado-novo.webp" alt="Modelo do certificado de conclusão do Excel Avançado" /></div>
         </div>
       </section>
 
@@ -298,7 +297,7 @@ export function LandingPage() {
           </div>
           <div className="guarantee" data-reveal>
             <div className="guarantee-seal"><span>7</span><small>DIAS</small></div>
-            <div><h3>Conheça o treinamento com 7 dias de garantia.</h3><p>Acesse o conteúdo e avalie com calma. Se decidir não continuar dentro do prazo, solicite o cancelamento conforme as condições do checkout.</p></div>
+            <div><h3>Você tem 7 dias para conhecer o treinamento.</h3><p>Acesse o conteúdo e avalie com calma. Se decidir não continuar dentro do prazo, solicite o cancelamento conforme as condições do checkout.</p></div>
           </div>
         </div>
       </section>
@@ -312,12 +311,12 @@ export function LandingPage() {
 
       <section className="final-cta">
         <div className="final-grid" />
-        <div className="shell" data-reveal><img src="/assets/logo-excel-avancado.png" alt="" /><p>Comece pelos fundamentos. Avance no seu ritmo.</p><h2>O melhor momento para deixar de adiar o Excel é agora.</h2><a className="primary-button" href="#oferta">Começar meu treinamento <ArrowIcon /></a><small>Acesso online • Materiais inclusos • 7 dias de garantia</small></div>
+        <div className="shell" data-reveal><p>Comece pelos fundamentos. Avance no seu ritmo.</p><h2>O melhor momento para deixar de adiar o Excel é agora.</h2><a className="primary-button" href="#oferta">Começar meu treinamento <ArrowIcon /></a><small>Acesso online • Estude no seu ritmo</small></div>
       </section>
 
       <footer className="footer">
         <div className="shell footer-top"><img src="/assets/logo-excel-avancado.png" alt="Excel Avançado" /><p>Curso online completo do básico ao avançado.</p><nav aria-label="Links legais"><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/termos-de-uso">Termos de Uso</a></nav></div>
-        <div className="shell footer-bottom"><span>© 2026 Excel Avançado. Todos os direitos reservados.</span><span>Curso livre com certificado digital de conclusão.</span></div>
+        <div className="shell footer-bottom"><span>© 2026 Excel Avançado. Todos os direitos reservados.</span><span>Curso livre online do básico ao avançado.</span></div>
       </footer>
 
       <button className={`mobile-sticky ${showSticky ? "show" : ""}`} type="button" onClick={openCheckout}>Quero começar <ArrowIcon /></button>

@@ -7,10 +7,10 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata: Metadata = {
   title: "Excel Avançado | Curso completo do básico ao avançado",
-  description: "Aprenda Excel do zero e avance até fórmulas, gráficos, dashboards e automações com aulas online, materiais práticos e certificado.",
+  description: "Aprenda Excel do zero e avance em fórmulas, gráficos, dashboards e automações com um treinamento online organizado e passo a passo.",
   openGraph: {
     title: "Excel Avançado — do básico ao avançado",
-    description: "Mais de 70 aulas, materiais de apoio, planilhas bônus e certificado de conclusão.",
+    description: "Curso online com conteúdo organizado, prática e um acervo de planilhas editáveis.",
     type: "website",
   },
 };

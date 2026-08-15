@@ -170,7 +170,7 @@ export function LandingPage() {
               <span className="video-vignette" /><span className="play-button"><PlayIcon /></span>
               <span className="video-caption"><strong>Conheça o treinamento por dentro</strong><small>Assista à apresentação</small></span>
             </button>
-            <div className="video-foot"><span><i /> Conteúdo organizado</span><span>Estude no seu ritmo</span></div>
+            <div className="video-foot"><span><i /> Conteúdo organizado</span><span>Vídeo rápido</span></div>
           </div>
         </div>
       </section>

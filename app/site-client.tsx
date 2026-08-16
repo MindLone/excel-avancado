@@ -324,7 +324,7 @@ export function LandingPage() {
       {videoOpen && (
         <div className="video-modal" role="dialog" aria-modal="true" aria-label="Vídeo de apresentação">
           <button className="modal-backdrop" type="button" onClick={() => setVideoOpen(false)} aria-label="Fechar vídeo" />
-          <div className="modal-panel"><button className="modal-close" type="button" onClick={() => setVideoOpen(false)} aria-label="Fechar"><CloseIcon /></button><div className="video-slot">{videoEmbedUrl ? <iframe src={videoEmbedUrl} title="Apresentação do curso Excel Avançado" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen /> : <><div className="slot-icon"><PlayIcon /></div><strong>Espaço preparado para o seu vídeo</strong><p>O player em 16:9 será colocado aqui quando você configurar o link.</p></>}</div></div>
+          <div className="modal-panel"><button className="modal-close" type="button" onClick={() => setVideoOpen(false)} aria-label="Fechar"><CloseIcon /></button><div className={`video-slot ${videoEmbedUrl ? "has-video" : ""}`}>{videoEmbedUrl ? <iframe src={videoEmbedUrl} title="Apresentação do curso Excel Avançado" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen /> : <><div className="slot-icon"><PlayIcon /></div><strong>Espaço preparado para o seu vídeo</strong><p>O player em 16:9 será colocado aqui quando você configurar o link.</p></>}</div></div>
         </div>
       )}
 

@@ -19,8 +19,8 @@ function CheckIcon() {
 }
 
 const benefits = [
-  ["Completo", "8 módulos com mais de 70 aulas"],
-  ["Expert", "aprenda do zero ao avançado"],
+  ["Conteúdo Completo", "8 módulos com mais de 70 aulas"],
+  ["Torne-se Expert", "aprenda do zero ao avançado"],
   ["Prático", "exercícios guiados fáceis de entender"],
   ["Acessível", "use celular, tablet ou computador"],
 ];

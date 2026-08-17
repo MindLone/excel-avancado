@@ -68,7 +68,7 @@ const faqs = [
   ["Posso assistir pelo celular?", "Sim. A área de membros pode ser acessada pelo celular ou pelo computador conectado à internet."],
   ["O curso possui arquivos para download?", "Sim. Você recebe apostila em PDF, arquivos para praticar e o acervo bônus de planilhas editáveis."],
   ["As planilhas bônus são exercícios?", "Não. Elas formam um acervo de arquivos editáveis para explorar, adaptar e usar como referência. Os arquivos de treinamento são entregues separadamente."],
-  ["Receberei certificado?", "Sim. Depois de concluir o treinamento e cumprir o período de liberação, você poderá emitir seu certificado digital de conclusão."],
+  ["Existe contato para suporte?", "Sim. Caso tenha alguma dúvida ou precise de ajuda, entre em contato pelo e-mail excelavancadoea@gmail.com. Nossa equipe estará disponível para orientar você sempre que necessário."],
   ["Como funciona a garantia?", "Você possui 7 dias para avaliar o conteúdo. Dentro desse prazo, pode solicitar o cancelamento conforme as condições apresentadas no checkout."],
 ];
 

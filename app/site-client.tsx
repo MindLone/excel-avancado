@@ -287,14 +287,35 @@ export function LandingPage() {
           <div className="offer-heading" data-reveal><p className="section-kicker">OFERTA DE LANÇAMENTO</p><h2>Comece hoje a desenvolver suas habilidades no Excel.</h2><p>Uma única inscrição reúne as aulas, materiais e bônus para você avançar de forma organizada.</p></div>
           <div className="offer-card" data-reveal>
             <div className="offer-list"><p>Você recebe:</p>{offerItems.map((item) => <div key={item}><span><CheckIcon /></span>{item}</div>)}</div>
-            <div className="price-box">
-              <span className="price-label">PAGAMENTO ÚNICO</span>
-              <div className="price"><small>R$</small><strong>147</strong><i>,00</i></div>
-              <p>Oferta de lançamento</p>
-              <button className="primary-button checkout-button" type="button" onClick={openCheckout}>Quero me inscrever agora <ArrowIcon /></button>
-              <small className="access-note">Acesso enviado por e-mail após a confirmação do pagamento.</small>
-            </div>
-          </div>
+<div className="price-box">
+  <span className="price-label">PAGAMENTO ÚNICO</span>
+
+  <div className="price-comparison">
+    <span>De</span>
+    <s>R$ 297,00</s>
+    <strong>por apenas</strong>
+  </div>
+
+  <div className="price">
+    <small>R$</small>
+    <strong>147</strong>
+    <i>,00</i>
+  </div>
+
+  <p>Oferta especial de lançamento</p>
+
+  <button
+    className="primary-button checkout-button"
+    type="button"
+    onClick={openCheckout}
+  >
+    Quero me inscrever agora <ArrowIcon />
+  </button>
+
+  <small className="access-note">
+    Acesso enviado por e-mail após a confirmação do pagamento.
+  </small>
+</div>
           <div className="guarantee" data-reveal>
             <div className="guarantee-seal"><span>7</span><small>DIAS</small></div>
             <div><h3>Você tem 7 dias para conhecer o treinamento.</h3><p>Acesse o conteúdo e avalie com calma. Se decidir não continuar dentro do prazo, solicite o cancelamento conforme as condições do checkout.</p></div>

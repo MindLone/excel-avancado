@@ -57,7 +57,7 @@ const offerItems = [
   "Aulas em vídeo organizadas por módulos",
   "Apostila digital para consulta",
   "Arquivos práticos de treinamento",
-  "Acervo de planilhas editáveis",
+  "+45 mil planilhas bônus para você",
   "Emissão do documento de conclusão",
 ];
 

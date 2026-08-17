@@ -229,7 +229,7 @@ export function LandingPage() {
       <section className="materials section-pad" id="bonus">
         <div className="shell materials-grid">
           <div className="materials-visual" data-reveal>
-            <div className="portrait-frame"><img src="/assets/planilhas-bonus.webp" alt="Acervo com mais de cinco mil planilhas bônus editáveis" /></div>
+            <div className="portrait-frame"><img src="/assets/planilhas-bonus.webp" alt="Acervo com mais de quarenta e cinco mil planilhas bônus editáveis" /></div>
           </div>
           <div className="materials-copy" data-reveal>
             <p className="section-kicker">MATERIAIS PARA APRENDER E PRATICAR</p>
@@ -238,7 +238,7 @@ export function LandingPage() {
             <div className="material-list">
               <div><span>01</span><div><h3>Apostila digital em PDF</h3><p>Um material complementar para consultar durante os estudos.</p></div></div>
               <div><span>02</span><div><h3>Material prático de treinamento</h3><p>Arquivos preparados para exercitar fundamentos apresentados nas aulas.</p></div></div>
-              <div><span>03</span><div><h3>Acervo de planilhas editáveis</h3><p>Mais de 5 mil modelos variados para explorar, adaptar e usar como referência.</p></div></div>
+              <div><span>03</span><div><h3>Acervo de planilhas editáveis</h3><p>Mais de 45 mil modelos variados para explorar, adaptar e usar como referência.</p></div></div>
             </div>
           </div>
         </div>

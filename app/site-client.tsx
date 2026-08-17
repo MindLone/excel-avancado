@@ -159,7 +159,7 @@ export function LandingPage() {
               <a className="text-link" href="#area-de-membros">Ver o curso por dentro</a>
             </div>
             <div className="hero-trust" aria-label="Informações da oferta">
-              <span>✓ Acesso online</span><span>✓ Estude no seu ritmo</span>
+              <span>✓ Suporte 24h</span><span>✓ Atualizações frequentes</span>
             </div>
           </div>
 
@@ -170,7 +170,7 @@ export function LandingPage() {
               <span className="video-vignette" /><span className="play-button"><PlayIcon /></span>
               <span className="video-caption"></span>
             </button>
-            <div className="video-foot"><span><i /> Conteúdo organizado</span><span>Vídeo rápido</span></div>
+            <div className="video-foot"><span><i /> Conteúdo organizado</span><span>vídeo com menos de 5 minutos</span></div>
           </div>
         </div>
       </section>

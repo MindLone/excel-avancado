@@ -316,7 +316,7 @@ export function LandingPage() {
 
       <footer className="footer">
         <div className="shell footer-top"><img src="/assets/logo-excel-avancado.png" alt="Excel Avançado" /><p>Curso online completo do básico ao avançado.</p><nav aria-label="Links legais"><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/termos-de-uso">Termos de Uso</a></nav></div>
-        <div className="shell footer-bottom"><span>© 2026 Excel Avançado. Todos os direitos reservados.</span><span>Curso livre online do básico ao avançado.</span></div>
+        <div className="shell footer-bottom"><span>© 2026 Excel Avançado. Todos os direitos reservados.</span><span>Obrigado por escolher o Excel Avançado. ❤</span></div>
       </footer>
 
       <button className={`mobile-sticky ${showSticky ? "show" : ""}`} type="button" onClick={openCheckout}>Quero começar <ArrowIcon /></button>

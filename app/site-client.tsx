@@ -316,6 +316,8 @@ export function LandingPage() {
     Acesso enviado por e-mail após a confirmação do pagamento.
   </small>
 </div>
+            
+</div>
           <div className="guarantee" data-reveal>
             <div className="guarantee-seal"><span>7</span><small>DIAS</small></div>
             <div><h3>Você tem 7 dias para conhecer o treinamento.</h3><p>Acesse o conteúdo e avalie com calma. Se decidir não continuar dentro do prazo, solicite o cancelamento conforme as condições do checkout.</p></div>

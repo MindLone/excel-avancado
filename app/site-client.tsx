@@ -289,7 +289,7 @@ export function LandingPage() {
             <div className="offer-list"><p>Você recebe:</p>{offerItems.map((item) => <div key={item}><span><CheckIcon /></span>{item}</div>)}</div>
             <div className="price-box">
               <span className="price-label">PAGAMENTO ÚNICO</span>
-              <div className="price"><small>R$</small><strong>97</strong><i>,00</i></div>
+              <div className="price"><small>R$</small><strong>147</strong><i>,00</i></div>
               <p>Oferta de lançamento</p>
               <button className="primary-button checkout-button" type="button" onClick={openCheckout}>Quero me inscrever agora <ArrowIcon /></button>
               <small className="access-note">Acesso enviado por e-mail após a confirmação do pagamento.</small>

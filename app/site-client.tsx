@@ -303,7 +303,6 @@ export function LandingPage() {
   </div>
 
   <p className="installment-price">OU EM <strong>12X</strong> DE <strong>R$ 15,20</strong></p>
-  <p>Oferta especial de lançamento</p>
 
   <button
     className="primary-button checkout-button"
@@ -313,9 +312,10 @@ export function LandingPage() {
     Quero me inscrever agora <ArrowIcon />
   </button>
 
-  <small className="access-note">
-    Acesso enviado por e-mail após a confirmação do pagamento.
-  </small>
+  <blockquote className="offer-quote">
+    <p>“Investir em conhecimento rende sempre os melhores juros.”</p>
+    <cite>— Benjamin Franklin</cite>
+  </blockquote>
 </div>
             
 </div>

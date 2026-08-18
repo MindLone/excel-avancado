@@ -302,6 +302,7 @@ export function LandingPage() {
     <i>,00</i>
   </div>
 
+  <p className="installment-price">OU EM <strong>12X</strong> DE <strong>R$ 15,20</strong></p>
   <p>Oferta especial de lançamento</p>
 
   <button

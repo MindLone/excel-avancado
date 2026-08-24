@@ -170,7 +170,7 @@ export function LandingPage() {
               <span className="video-vignette" /><span className="play-button"><PlayIcon /></span>
               <span className="video-caption"></span>
             </button>
-            <div className="video-foot"><span><i /> Conteúdo organizado</span><span>vídeo com menos de 5 minutos</span></div>
+            <div className="video-foot"><span><i /> Conteúdo organizado</span><span>vídeo de 5 minutos</span></div>
           </div>
         </div>
       </section>

@@ -8,12 +8,21 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Excel Avançado | Curso completo do básico ao avançado",
-  description: "Aprenda Excel do zero e avance em fórmulas, gráficos, dashboards e automações com um treinamento online organizado e passo a passo.",
+  metadataBase: new URL("https://excelavancado.shop"),
+  title: "Excel Avançado | Curso + 75 mil planilhas editáveis",
+  description: "Curso Excel Avançado com aulas online, materiais de apoio e uma biblioteca com mais de 75 mil planilhas editáveis, dashboards e templates.",
   openGraph: {
-    title: "Excel Avançado — do básico ao avançado",
-    description: "Curso online com conteúdo organizado, prática e um acervo de planilhas editáveis.",
+    title: "Excel Avançado | Curso + 75 mil planilhas",
+    description: "Aprenda Excel e receba uma biblioteca completa de planilhas, dashboards e materiais digitais.",
+    url: "https://excelavancado.shop",
+    siteName: "Excel Avançado",
     type: "website",
+    locale: "pt_BR",
+  },
+  twitter: {
+    card: "summary",
+    title: "Excel Avançado | Curso + 75 mil planilhas",
+    description: "Curso online de Excel com uma biblioteca completa de materiais editáveis.",
   },
 };
 

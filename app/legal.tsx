@@ -1,19 +1,28 @@
 type LegalSection = { title: string; paragraphs?: string[]; items?: string[] };
 
+function LegalBrand() {
+  return (
+    <span className="legal-brand" aria-label="Excel Avançado">
+      <span className="legal-brand-icon" aria-hidden="true">X</span>
+      <span><strong>EXCEL</strong><small>AVANÇADO</small></span>
+    </span>
+  );
+}
+
 export function LegalPage({ eyebrow, title, intro, sections }: { eyebrow: string; title: string; intro: string; sections: LegalSection[] }) {
   return (
     <main className="legal-page">
       <header className="legal-header">
-        <a href="/" aria-label="Voltar ao início"><img src="/assets/logo-excel-avancado.png" alt="Excel Avançado" /></a>
+        <a href="/" aria-label="Voltar ao início"><LegalBrand /></a>
         <a className="legal-back" href="/">← Voltar ao site</a>
       </header>
       <section className="legal-hero">
         <div className="legal-grid" />
         <div className="legal-shell">
-          <p className="section-kicker">{eyebrow}</p>
+          <p className="eyebrow eyebrow-light">{eyebrow}</p>
           <h1>{title}</h1>
           <p>{intro}</p>
-          <span>Última atualização: 11 de agosto de 2026</span>
+          <span>Última atualização: 6 de setembro de 2026</span>
         </div>
       </section>
       <article className="legal-content legal-shell">

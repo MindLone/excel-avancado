@@ -1,364 +1,306 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
-function ArrowIcon() {
-  return <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 6l4 4-4 4" /></svg>;
-}
+const ASSET_BASE = "https://excelpratico.shop/assets";
 
-function PlayIcon() {
-  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 7 8 5-8 5V7Z" /></svg>;
-}
-
-function CloseIcon() {
-  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 7 10 10M17 7 7 17" /></svg>;
-}
-
-function CheckIcon() {
-  return <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 3.5 3.5L16 5.5" /></svg>;
-}
-
-const benefits = [
-  ["Conteúdo Completo", "8 módulos com mais de 70 aulas"],
-  ["Torne-se Expert", "aprenda do zero ao avançado"],
-  ["Prático", "exercícios guiados fáceis de entender"],
-  ["Acessível", "use celular, tablet ou computador"],
+const curriculum = [
+  ["01", "Fundamentos bem organizados", "Comece pela base certa: interface, células, referências, formatação e organização de dados."],
+  ["02", "Fórmulas e funções", "Aprenda a construir cálculos, combinar funções e resolver tarefas com mais segurança."],
+  ["03", "Busca e tratamento de dados", "Trabalhe com textos, datas, filtros, validações, buscas e cruzamentos de informações."],
+  ["04", "Tabelas e análises", "Organize bases maiores e transforme dados em informações úteis para decisões e relatórios."],
+  ["05", "Gráficos e visualização", "Crie apresentações visuais mais claras, profissionais e fáceis de interpretar."],
+  ["06", "Tabelas dinâmicas", "Resuma grandes volumes de informação e monte análises com muito mais agilidade."],
+  ["07", "Dashboards", "Estruture painéis para acompanhar indicadores, metas, resultados e evolução."],
+  ["08", "Automação e recursos avançados", "Avance para recursos que reduzem tarefas repetitivas e ampliam sua autonomia no Excel."],
 ];
 
-const outcomes = [
-  { icon: "01", title: "Organize dados com clareza", text: "Navegue, formate e estruture informações de maneira mais segura e eficiente." },
-  { icon: "fx", title: "Use fórmulas com segurança", text: "Entenda a lógica por trás das fórmulas e acompanhe aplicações passo a passo." },
-  { icon: "↗", title: "Crie análises visuais", text: "Transforme dados em gráficos, tabelas dinâmicas e painéis fáceis de interpretar." },
-  { icon: "⚡", title: "Ganhe mais autonomia", text: "Resolva tarefas com menos dependência e avance no seu próprio ritmo." },
+const gallery = [
+  ["dashboards/dashboard_01.webp", "Dashboard Financeiro"],
+  ["dashboards/dashboard_02.webp", "Dashboard de Vendas"],
+  ["dashboards/dashboard_03.webp", "Gestão e KPIs"],
+  ["dashboards/dashboard_04.webp", "Fluxo de Caixa"],
+  ["dashboards/dashboard_05.webp", "Orçamento"],
+  ["dashboards/dashboard_06.webp", "Estoque"],
+  ["planilhas/planilha_01-v2.webp", "Controle Financeiro"],
+  ["planilhas/planilha_02-v2.webp", "Precificação"],
+  ["planilhas/planilha_03-v2.webp", "Planejamento Mensal"],
+  ["planilhas/planilha_04-v2.webp", "Cadastro de Clientes"],
 ];
 
-const topics = [
-  ["Base", "Fundamentos e organização de dados", "Navegação, manipulação e formatação para construir uma base segura."],
-  ["Fórmulas", "Fórmulas e funções", "A lógica dos cálculos e diferentes funções usadas no dia a dia."],
-  ["Dados", "Textos, datas e horários", "Tratamento e organização de informações comuns em planilhas."],
-  ["Busca", "Buscas e cruzamentos", "Recursos para localizar e relacionar informações em bases de dados."],
-  ["Análise", "Tabelas dinâmicas", "Organização, resumo e análise de dados com mais agilidade."],
-  ["Visual", "Gráficos", "Criação de gráficos para comunicar informações com clareza."],
-  ["Auto", "Macros e VBA", "Primeiros passos em automação e nos fundamentos de macros e VBA."],
-  ["Painéis", "Dashboards interativos", "Recursos para criar planilhas mais visuais e interativas."],
-];
-
-const audience = [
-  "Está começando no Excel e precisa de uma sequência clara.",
-  "Já conhece o básico, mas quer avançar em fórmulas e análises.",
-  "Quer ter mais autonomia para realizar tarefas profissionais.",
-  "Precisa criar planilhas, gráficos, relatórios ou controles.",
-  "Deseja desenvolver uma habilidade valorizada em diferentes áreas.",
-  "Prefere estudar online e no próprio ritmo.",
-];
-
-const offerItems = [
-  "Curso completo do básico ao avançado",
-  "Aulas em vídeo organizadas por módulos",
-  "Apostila digital para consulta",
-  "Arquivos práticos de treinamento",
-  "+45 mil planilhas bônus para você",
-  "Emissão do documento de conclusão",
+const reviews = [
+  ["avaliacoes/bruno-eva-wellyton.webp", "Avaliações de Bruno, Eva e Wellyton"],
+  ["avaliacoes/ingara-fernando.webp", "Avaliações de Ingara e Fernando"],
+  ["avaliacoes/hudsson-josi.webp", "Avaliações de Hudsson e Josi"],
+  ["avaliacoes/welbert-luana-bazar.webp", "Avaliações de Welbert, Luana e Bazar Tucum"],
 ];
 
 const faqs = [
-  ["Preciso saber Excel antes de começar?", "Não. O treinamento começa pelos fundamentos e avança gradualmente até conteúdos mais completos."],
-  ["Como o conteúdo está organizado?", "As aulas seguem uma sequência progressiva, começando pelo essencial e avançando por diferentes recursos do Excel."],
-  ["Como vou receber o acesso?", "Após a confirmação da compra, as instruções de acesso serão enviadas para o e-mail usado no pagamento."],
-  ["Posso assistir pelo celular?", "Sim. A área de membros pode ser acessada pelo celular ou pelo computador conectado à internet."],
-  ["O curso possui arquivos para download?", "Sim. Você recebe apostila em PDF, arquivos para praticar e o acervo bônus de planilhas editáveis."],
-  ["As planilhas bônus são exercícios?", "Não. Elas formam um acervo de arquivos editáveis para explorar, adaptar e usar como referência. Os arquivos de treinamento são entregues separadamente."],
-  ["Existe contato para suporte?", "Sim. Caso tenha alguma dúvida ou precise de ajuda, entre em contato pelo e-mail excelavancadoea@gmail.com. Nossa equipe estará disponível para orientar você sempre que necessário."],
-  ["Como funciona a garantia?", "Você possui 7 dias para avaliar o conteúdo. Dentro desse prazo, pode solicitar o cancelamento conforme as condições apresentadas no checkout."],
+  ["Preciso já saber Excel?", "Não. A estrutura começa pelos fundamentos e avança progressivamente até recursos mais completos."],
+  ["O curso é online?", "Sim. O acesso é feito pela área de membros e pode ser acompanhado no seu ritmo pelo computador ou celular."],
+  ["As 75 mil planilhas fazem parte da compra?", "Sim. O pacote de planilhas editáveis é entregue junto com o curso como material complementar da oferta."],
+  ["O que mais acompanha o curso?", "Além das aulas e das planilhas, a oferta reúne dashboards e materiais extras, incluindo modelos para PowerPoint, Word e Power BI."],
+  ["Como recebo o acesso?", "Após a confirmação do pagamento, as instruções de acesso são enviadas para o e-mail informado na compra."],
+  ["O pagamento é mensal?", "Não. A página trabalha com uma inscrição de pagamento único; as condições finais sempre aparecem no checkout antes da confirmação."],
+  ["Tem garantia?", "Sim. Você tem 7 dias para conhecer o conteúdo e pode solicitar o cancelamento dentro desse período conforme as condições do checkout."],
+  ["Como funciona o suporte?", "Para dúvidas de acesso ou entrega, utilize o contato informado na área de membros e nos materiais recebidos após a compra."],
 ];
 
-function FaqItem({ question, answer }: { question: string; answer: string }) {
-  const [open, setOpen] = useState(false);
+function Arrow() {
+  return <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 6l4 4-4 4" /></svg>;
+}
+
+function Check() {
+  return <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 3.4 3.4L16 5.8" /></svg>;
+}
+
+function Logo({ footer = false }: { footer?: boolean }) {
   return (
-    <div className={`faq-item ${open ? "is-open" : ""}`}>
-      <button type="button" aria-expanded={open} onClick={() => setOpen((value) => !value)}>
-        <span>{question}</span><i>{open ? "−" : "+"}</i>
-      </button>
-      {open && <p>{answer}</p>}
+    <div className={`brand-mark ${footer ? "brand-mark-footer" : ""}`} aria-label="Excel Avançado">
+      <span className="brand-symbol" aria-hidden="true">
+        <svg viewBox="0 0 48 48"><rect x="5" y="7" width="29" height="34" rx="6" /><path d="M18 16 10 32M10 16l8 16" /><path d="M31 13h11v22H31" /></svg>
+      </span>
+      <span className="brand-copy"><strong>EXCEL</strong><small>AVANÇADO</small></span>
+    </div>
+  );
+}
+
+function ProductVisual() {
+  return (
+    <div className="product-stage" aria-label="Curso Excel Avançado com biblioteca de planilhas e materiais extras">
+      <div className="product-glow" />
+      <div className="course-box">
+        <div className="course-box-grid" />
+        <span className="course-tag">CURSO COMPLETO</span>
+        <div className="course-x">X</div>
+        <p>EXCEL</p>
+        <h3>AVANÇADO</h3>
+        <small>Do essencial aos recursos avançados</small>
+      </div>
+      <div className="bonus-card bonus-card-a"><strong>75 MIL+</strong><span>planilhas editáveis</span></div>
+      <div className="bonus-card bonus-card-b"><strong>+ EXTRAS</strong><span>dashboards e templates</span></div>
     </div>
   );
 }
 
 export function LandingPage() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [videoOpen, setVideoOpen] = useState(false);
-  const [checkoutOpen, setCheckoutOpen] = useState(false);
-  const [showSticky, setShowSticky] = useState(false);
   const checkoutUrl = process.env.NEXT_PUBLIC_CHECKOUT_URL?.trim();
-  const videoEmbedUrl = process.env.NEXT_PUBLIC_VIDEO_EMBED_URL?.trim();
+  const [checkoutNotice, setCheckoutNotice] = useState(false);
+  const [reviewOpen, setReviewOpen] = useState<string | null>(null);
+  const [sticky, setSticky] = useState(false);
+  const [promoText, setPromoText] = useState("CONDIÇÃO ESPECIAL DISPONÍVEL HOJE — PAGAMENTO ÚNICO");
+  const currentYear = useMemo(() => new Date().getFullYear(), []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add("revealed")),
-      { threshold: 0.12 },
-    );
-    document.querySelectorAll("[data-reveal]").forEach((element) => observer.observe(element));
-    const onScroll = () => setShowSticky(window.scrollY > 720);
+    const now = new Date();
+    const date = new Intl.DateTimeFormat("pt-BR", { day: "2-digit", month: "2-digit" }).format(now);
+    setPromoText(`CONDIÇÃO ESPECIAL DISPONÍVEL HOJE, ${date} — PAGAMENTO ÚNICO`);
+
+    const onScroll = () => setSticky(window.scrollY > 900);
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => { observer.disconnect(); window.removeEventListener("scroll", onScroll); };
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    const close = (event: KeyboardEvent) => {
-      if (event.key === "Escape") { setVideoOpen(false); setCheckoutOpen(false); setMenuOpen(false); }
-    };
-    document.addEventListener("keydown", close);
-    return () => document.removeEventListener("keydown", close);
-  }, []);
-
-  const openCheckout = () => {
+  const buy = () => {
     if (checkoutUrl) {
       window.location.href = checkoutUrl;
       return;
     }
-    setCheckoutOpen(true);
+    setCheckoutNotice(true);
   };
 
   return (
     <main>
-      <header className="site-header">
-        <a className="brand" href="#inicio" aria-label="Excel Avançado — início">
-          <img src="/assets/logo-excel-avancado.png" alt="Excel Avançado" />
-        </a>
-
-        <nav className="desktop-nav" aria-label="Navegação principal">
-          <a href="#conteudo">Conteúdo</a>
-          <a href="#area-de-membros">Área de membros</a>
-          <a href="#bonus">Bônus</a>
-          <a className="nav-cta" href="#oferta">Quero começar</a>
-        </nav>
-
-        <button className="menu-button" type="button" aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
-          <span /><span />
-        </button>
-
-        {menuOpen && (
-          <nav className="mobile-nav" aria-label="Navegação móvel">
-            <a href="#conteudo" onClick={() => setMenuOpen(false)}>Conteúdo</a>
-            <a href="#area-de-membros" onClick={() => setMenuOpen(false)}>Área de membros</a>
-            <a href="#bonus" onClick={() => setMenuOpen(false)}>Bônus</a>
-            <a href="#oferta" onClick={() => setMenuOpen(false)}>Quero começar</a>
-          </nav>
-        )}
-      </header>
+      <div className="promo-bar"><span>{promoText}</span></div>
 
       <section className="hero" id="inicio">
-        <div className="hero-glow" /><div className="sheet-grid" />
-        <div className="shell hero-grid">
-          <div className="hero-copy">
-            <p className="eyebrow"><span /> Curso online • do básico ao avançado</p>
-            <h1>Aprenda Excel do zero e<span> avance com segurança.</span></h1>
-            <p className="hero-lead">Domine planilhas, fórmulas, dashboards e automações em um treinamento online, organizado e passo a passo.</p>
-            <div className="hero-actions">
-              <a className="primary-button" href="#oferta">Quero começar agora <ArrowIcon /></a>
-              <a className="text-link" href="#area-de-membros">Ver o curso por dentro</a>
-            </div>
-            <div className="hero-trust" aria-label="Informações da oferta">
-              <span>✓ Suporte 24h</span><span>✓ Atualizações frequentes</span>
-            </div>
+        <div className="hero-noise" />
+        <div className="container hero-grid">
+          <div className="hero-copy-wrap">
+            <Logo />
+            <p className="eyebrow">APRENDA EXCEL DE VERDADE E LEVE UMA BIBLIOTECA COMPLETA JUNTO</p>
+            <h1>Domine o Excel e receba <span>75 MIL planilhas editáveis</span> como parte do pacote.</h1>
+            <p className="hero-subtitle">O foco é o <b>Curso Excel Avançado</b>: uma formação online organizada para você evoluir no Excel e ainda sair com uma biblioteca enorme de materiais prontos para usar.</p>
+            <div className="hero-points"><span>Curso online completo</span><span>Planilhas, dashboards e materiais extras</span></div>
+            <a className="cta cta-primary" href="#oferta">QUERO CONHECER O PACOTE <Arrow /></a>
           </div>
-
-          <div className="video-wrap">
-            <div className="video-label">APRESENTAÇÃO DO CURSO</div>
-            <button className="video-card" type="button" onClick={() => setVideoOpen(true)} aria-label="Abrir espaço do vídeo de apresentação">
-              <img src="/assets/area-de-membros.webp" alt="Prévia da área de membros do Excel Avançado" />
-              <span className="video-vignette" /><span className="play-button"><PlayIcon /></span>
-              <span className="video-caption"></span>
-            </button>
-            <div className="video-foot"><span><i /> Conteúdo organizado</span><span>vídeo de 5 minutos</span></div>
-          </div>
+          <ProductVisual />
         </div>
       </section>
 
-      <section className="benefit-band" aria-label="Principais benefícios">
-        <div className="shell benefit-grid">
-          {benefits.map(([value, label], index) => (
-            <div className="benefit-item" key={label}><span className="benefit-index">0{index + 1}</span><div><strong>{value}</strong><small>{label}</small></div></div>
-          ))}
-        </div>
-      </section>
-
-      <section className="intro" id="conteudo">
-        <div className="shell intro-grid" data-reveal>
-          <p className="section-kicker">UMA SEQUÊNCIA CLARA PARA AVANÇAR</p>
-          <h2>O Excel não precisa continuar sendo um obstáculo na sua rotina.</h2>
-          <p>Você aprende os fundamentos, acompanha a aplicação e avança por recursos mais completos sem depender de conhecimento prévio.</p>
-        </div>
-      </section>
-
-      <section className="outcomes section-pad">
-        <div className="shell">
-          <div className="section-heading" data-reveal>
-            <div><p className="section-kicker">DO PRIMEIRO CONTATO À AUTONOMIA</p><h2>Transforme tarefas confusas em planilhas muito mais completas.</h2></div>
-            <p>Desenvolva habilidades que podem ser aplicadas no trabalho, nos estudos e na organização do dia a dia.</p>
+      <section className="section problem" aria-labelledby="problem-title">
+        <div className="container">
+          <div className="section-heading">
+            <p className="eyebrow">NÃO É SÓ ASSISTIR AULA. É SABER FAZER.</p>
+            <h2 id="problem-title">Pare de depender de tentativa e erro toda vez que o Excel aparece na sua frente.</h2>
+            <p>Fórmulas quebradas, relatórios confusos e planilhas improvisadas viram um problema quando falta uma sequência clara de aprendizado. A proposta aqui é simples: aprender, praticar e ter modelos prontos para consultar quando precisar.</p>
           </div>
-          <div className="outcome-grid">
-            {outcomes.map((item) => (
-              <article className="outcome-card" key={item.title} data-reveal>
-                <span className="card-symbol">{item.icon}</span><h3>{item.title}</h3><p>{item.text}</p><i />
-              </article>
+          <div className="problem-grid">
+            <article className="problem-item"><span className="number">01</span><div><h3>Aprenda com sequência</h3><p>O conteúdo foi organizado para você evoluir dos fundamentos até ferramentas mais avançadas sem ficar pulando de tutorial em tutorial.</p></div></article>
+            <article className="problem-item"><span className="number">02</span><div><h3>Pratique com aplicação real</h3><p>Use materiais de apoio e modelos para entender como o Excel funciona fora da teoria.</p></div></article>
+            <article className="problem-item"><span className="number">03</span><div><h3>Tenha uma biblioteca pronta</h3><p>Além do curso, você recebe milhares de arquivos para adaptar, estudar e usar como ponto de partida.</p></div></article>
+          </div>
+          <div className="section-cta"><a className="text-cta" href="#conteudo">VER O QUE VOU APRENDER <Arrow /></a></div>
+        </div>
+      </section>
+
+      <section className="section course-section" id="conteudo" aria-labelledby="course-title">
+        <div className="container container-wide">
+          <div className="section-heading center">
+            <p className="eyebrow">DO BÁSICO AOS RECURSOS MAIS AVANÇADOS</p>
+            <h2 id="course-title">Um curso para transformar o Excel em uma ferramenta que você realmente sabe usar.</h2>
+            <p>Você avança por etapas, entendendo a lógica por trás das ferramentas em vez de apenas decorar onde clicar.</p>
+          </div>
+          <div className="curriculum-grid">
+            {curriculum.map(([number, title, text]) => (
+              <article className="curriculum-card" key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></article>
             ))}
           </div>
+          <div className="section-cta"><a className="cta cta-primary" href="#oferta">QUERO ACESSAR O CURSO</a></div>
         </div>
       </section>
 
-      <section className="curriculum section-pad">
-        <div className="curriculum-atmosphere" />
-        <div className="shell">
-          <div className="section-heading compact" data-reveal>
-            <div><p className="section-kicker">CONTEÚDO ORGANIZADO POR ETAPAS</p><h2>Dos fundamentos a recursos mais avançados do Excel.</h2></div>
-            <p>Uma sequência progressiva para começar pelo essencial e avançar no seu ritmo, sem uma grade cansativa e confusa.</p>
+      <section className="section showcase" id="bonus" aria-labelledby="showcase-title">
+        <div className="container container-wide">
+          <div className="section-heading center">
+            <p className="eyebrow">E O CURSO NÃO VEM SOZINHO</p>
+            <h2 id="showcase-title">Você também recebe mais de 75 mil planilhas editáveis e dashboards.</h2>
+            <p>Use a biblioteca como referência, material de prática ou ponto de partida para controles reais. Escolha o modelo, edite com seus dados e adapte ao que você precisa.</p>
           </div>
-          <div className="topic-grid">
-            {topics.map(([tag, title, text], index) => (
-              <article className="topic-card" key={title} data-reveal>
-                <div className="topic-top"><span>{tag}</span><i>{String(index + 1).padStart(2, "0")}</i></div>
-                <h3>{title}</h3><p>{text}</p>
-              </article>
+          <div className="gallery" aria-label="Prévia das planilhas e dashboards incluídos">
+            {gallery.map(([src, label]) => (
+              <figure className="gallery-card" key={src}><img src={`${ASSET_BASE}/${src}`} alt={label} loading="lazy" /><figcaption>{label}</figcaption></figure>
             ))}
           </div>
-          <div className="center-action" data-reveal><a className="secondary-button" href="#oferta">Quero ter acesso ao curso <ArrowIcon /></a></div>
+          <div className="swipe-hint">← deslize para ver mais →</div>
         </div>
       </section>
 
-      <section className="materials section-pad" id="bonus">
-        <div className="shell materials-grid">
-          <div className="materials-visual" data-reveal>
-            <div className="portrait-frame"><img src="/assets/planilhas-bonus.webp" alt="Acervo com mais de quarenta e cinco mil planilhas bônus editáveis" /></div>
+      <section className="section categories" aria-labelledby="categories-title">
+        <div className="container">
+          <div className="section-heading">
+            <p className="eyebrow">MATERIAL PARA CONSULTAR SEMPRE</p>
+            <h2 id="categories-title">Arquivos para diferentes áreas, rotinas e necessidades.</h2>
           </div>
-          <div className="materials-copy" data-reveal>
-            <p className="section-kicker">MATERIAIS PARA APRENDER E PRATICAR</p>
-            <h2>Você não recebe apenas as videoaulas.</h2>
-            <p className="copy-lead">O treinamento reúne materiais para consultar conceitos, colocar os fundamentos em prática e explorar novas possibilidades no Excel.</p>
-            <div className="material-list">
-              <div><span>01</span><div><h3>Apostila digital em PDF</h3><p>Um material complementar para consultar durante os estudos.</p></div></div>
-              <div><span>02</span><div><h3>Material prático de treinamento</h3><p>Arquivos preparados para exercitar fundamentos apresentados nas aulas.</p></div></div>
-              <div><span>03</span><div><h3>Acervo de planilhas editáveis</h3><p>Mais de 45 mil modelos variados para explorar, adaptar e usar como referência.</p></div></div>
+          <div className="category-cloud">
+            {[
+              "Financeiro", "Fluxo de Caixa", "Vendas", "Estoque", "Administrativo", "RH e DP", "Gestão", "Marketing", "Contábil", "Produção", "Engenharia", "Agro", "Saúde", "Escolar", "Imóveis", "Metas", "Logística", "Serviços", "Dashboards", "Power BI", "PowerPoint", "Word"
+            ].map((item) => <span key={item}>{item}</span>)}
+          </div>
+        </div>
+      </section>
+
+      <section className="section extras" aria-labelledby="extras-title">
+        <div className="container">
+          <div className="section-heading center">
+            <p className="eyebrow eyebrow-light">UM PACOTE MUITO MAIOR QUE O CURSO</p>
+            <h2 id="extras-title">Além das aulas, você recebe uma coleção completa de materiais digitais.</h2>
+          </div>
+          <div className="extras-grid">
+            <article><b>75 MIL+</b><h3>Planilhas editáveis</h3><p>Modelos para finanças, gestão, vendas, estoque, organização e dezenas de outras finalidades.</p></article>
+            <article><b>50 MIL</b><h3>Slides PowerPoint</h3><p>Modelos para acelerar apresentações profissionais, acadêmicas e comerciais.</p></article>
+            <article><b>4 MIL</b><h3>Modelos Word</h3><p>Documentos editáveis para diferentes situações e rotinas.</p></article>
+            <article><b>800</b><h3>Templates Power BI</h3><p>Materiais para explorar painéis, visualizações e projetos de dados.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section reviews-section" aria-labelledby="reviews-title">
+        <div className="container">
+          <div className="section-heading center">
+            <p className="eyebrow">AVALIAÇÕES DE CLIENTES</p>
+            <h2 id="reviews-title">Veja algumas experiências com nossos materiais.</h2>
+          </div>
+          <div className="reviews-mask">
+            <div className="reviews-track">
+              {[...reviews, ...reviews].map(([src, alt], index) => (
+                <button className="review-card" type="button" key={`${src}-${index}`} onClick={() => setReviewOpen(`${ASSET_BASE}/${src}`)} aria-label={`Ampliar ${alt}`}>
+                  <img src={`${ASSET_BASE}/${src}`} alt={alt} loading="lazy" />
+                </button>
+              ))}
             </div>
           </div>
+          <p className="reviews-hint">Toque em uma avaliação para ampliar.</p>
         </div>
       </section>
 
-      <section className="members section-pad" id="area-de-membros">
-        <div className="members-bg" />
-        <div className="shell">
-          <div className="members-copy" data-reveal>
-            <p className="section-kicker">OLHA COMO É A ÁREA DE MEMBROS</p>
-            <h2>Todo o conteúdo organizado em um ambiente simples de usar.</h2>
-            <p>Assim que a compra for confirmada, você recebe as instruções por e-mail. Dentro da plataforma, aulas e materiais ficam separados para você encontrar tudo com facilidade.</p>
-            <div className="members-points"><span>✓ Aulas por módulos</span><span>✓ Computador ou celular</span><span>✓ Continue de onde parou</span></div>
+      <section className="section pricing" id="oferta" aria-labelledby="pricing-title">
+        <div className="container container-pricing">
+          <div className="section-heading center">
+            <p className="eyebrow">A OFERTA AGORA É COMPLETA</p>
+            <h2 id="pricing-title">Leve o Curso Excel Avançado e todo o pacote de materiais em uma única inscrição.</h2>
+            <p>O curso é o produto principal. As planilhas, dashboards e templates entram juntos para você aprender e já ter uma biblioteca pronta para usar.</p>
           </div>
-          <div className="members-device" data-reveal>
-            <div className="browser-bar"><i /><i /><i /><span>Área de membros • Excel Avançado</span></div>
-            <img src="/assets/area-de-membros-real.webp" alt="Tela real da área de membros do curso Excel Avançado" />
-          </div>
+          <article className="offer-card">
+            <div className="offer-main">
+              <div className="value-badge">PACOTE COMPLETO</div>
+              <Logo />
+              <h3>CURSO EXCEL AVANÇADO</h3>
+              <p className="offer-lead">Formação online + biblioteca de materiais.</p>
+              <ul className="feature-list feature-list-strong">
+                {[
+                  "Curso completo de Excel do essencial ao avançado",
+                  "Aulas organizadas para acompanhar no seu ritmo",
+                  "Material extra de apoio e prática",
+                  "Mais de 75 MIL planilhas editáveis",
+                  "Dashboards e modelos para diferentes áreas",
+                  "50 mil slides para PowerPoint",
+                  "4 mil modelos editáveis no Word",
+                  "800 templates para Power BI",
+                  "Área de membros online",
+                  "7 dias de garantia"
+                ].map((item) => <li key={item}><span><Check /></span>{item}</li>)}
+              </ul>
+            </div>
+            <div className="price-panel">
+              <span className="price-label">PAGAMENTO ÚNICO</span>
+              <div className="price-old">De <s>R$ 297,00</s> por</div>
+              <div className="price-current"><small>R$</small><strong>147</strong><i>,00</i></div>
+              <p>ou parcele conforme as condições disponíveis no checkout</p>
+              <button className="cta cta-primary checkout-cta" type="button" onClick={buy}>SIM, QUERO O PACOTE COMPLETO <Arrow /></button>
+              <div className="security-line"><span>7 dias de garantia</span><span>Compra segura</span><span>Acesso online</span></div>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section className="certificate section-pad">
-        <div className="shell certificate-grid">
-          <div className="certificate-copy" data-reveal>
-            <p className="section-kicker">CONCLUSÃO RECONHECIDA</p>
-            <h2>Finalize o treinamento e registre sua conquista.</h2>
-            <p>Depois de concluir o curso e cumprir o período de liberação, você poderá emitir seu certificado digital com o nome informado no cadastro.</p>
-            <div className="certificate-note"><span><CheckIcon /></span><p><strong>Emissão inclusa</strong><small>Sem cobrança adicional na conclusão.</small></p></div>
-          </div>
-          <div className="certificate-visual" data-reveal><div className="gold-glow" /><img src="/assets/certificado-novo.webp" alt="Modelo do certificado de conclusão do Excel Avançado" /></div>
+      <section className="section guarantee" aria-labelledby="guarantee-title">
+        <div className="container guarantee-card">
+          <div className="guarantee-seal"><strong>7</strong><span>DIAS</span></div>
+          <div><p className="eyebrow">GARANTIA</p><h2 id="guarantee-title">Você tem 7 dias para conhecer o curso e os materiais.</h2><p>Acesse o conteúdo, avalie a entrega e, se decidir não continuar dentro do prazo, solicite o cancelamento conforme as condições apresentadas no checkout.</p></div>
         </div>
       </section>
 
-      <section className="audience section-pad">
-        <div className="shell audience-grid">
-          <div className="audience-title" data-reveal><p className="section-kicker">PARA QUEM É</p><h2>Este treinamento foi pensado para você que quer avançar com clareza.</h2><p>Você não precisa ser bom em matemática nem ter experiência prévia.</p></div>
-          <div className="audience-list">
-            {audience.map((item, index) => <div key={item} data-reveal><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p><i><CheckIcon /></i></div>)}
+      <section className="section faq" aria-labelledby="faq-title">
+        <div className="container container-narrow">
+          <div className="section-heading center"><p className="eyebrow eyebrow-light">SEM COMPLICAÇÃO</p><h2 id="faq-title">Dúvidas frequentes</h2></div>
+          <div className="faq-list">
+            {faqs.map(([question, answer]) => <details key={question}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}
           </div>
-        </div>
-      </section>
-
-      <section className="offer section-pad" id="oferta">
-        <div className="offer-glow" />
-        <div className="shell offer-shell">
-          <div className="offer-heading" data-reveal><p className="section-kicker">OFERTA DE LANÇAMENTO</p><h2>Comece hoje a desenvolver suas habilidades no Excel.</h2><p>Uma única inscrição reúne as aulas, materiais e bônus para você avançar de forma organizada.</p></div>
-          <div className="offer-card" data-reveal>
-            <div className="offer-list"><p>Você recebe:</p>{offerItems.map((item) => <div key={item}><span><CheckIcon /></span>{item}</div>)}</div>
-<div className="price-box">
-  <span className="price-label">PAGAMENTO ÚNICO</span>
-
-  <div className="price-comparison">
-    <span>De</span>
-    <s>R$ 297,00</s>
-    <strong>por apenas</strong>
-  </div>
-
-  <div className="price">
-    <small>R$</small>
-    <strong>147</strong>
-    <i>,00</i>
-  </div>
-
-  <p className="installment-price">OU EM <strong>12X</strong> DE <strong>R$ 15,20</strong></p>
-
-  <button
-    className="primary-button checkout-button"
-    type="button"
-    onClick={openCheckout}
-  >
-    Quero me inscrever agora <ArrowIcon />
-  </button>
-
-  <blockquote className="offer-quote">
-    <p>“Investir em conhecimento rende sempre os melhores juros.”</p>
-    <cite>— Benjamin Franklin</cite>
-  </blockquote>
-</div>
-            
-</div>
-          <div className="guarantee" data-reveal>
-            <div className="guarantee-seal"><span>7</span><small>DIAS</small></div>
-            <div><h3>Você tem 7 dias para conhecer o treinamento.</h3><p>Acesse o conteúdo e avalie com calma. Se decidir não continuar dentro do prazo, solicite o cancelamento conforme as condições do checkout.</p></div>
-          </div>
-        </div>
-      </section>
-
-      <section className="faq section-pad">
-        <div className="shell faq-grid">
-          <div className="faq-heading" data-reveal><p className="section-kicker">PERGUNTAS FREQUENTES</p><h2>O que você precisa saber antes de começar.</h2><p>Ainda ficou alguma dúvida? As respostas principais estão aqui.</p></div>
-          <div className="faq-list" data-reveal>{faqs.map(([question, answer]) => <FaqItem key={question} question={question} answer={answer} />)}</div>
         </div>
       </section>
 
       <section className="final-cta">
-        <div className="final-grid" />
-        <div className="shell" data-reveal><p>Comece pelos fundamentos. Avance no seu ritmo.</p><h2>O melhor momento para deixar de adiar o Excel é agora.</h2><a className="primary-button" href="#oferta">Começar meu treinamento <ArrowIcon /></a><small>Acesso online • Estude no seu ritmo</small></div>
+        <div className="container final-cta-inner"><p className="eyebrow eyebrow-light">PRONTO PARA COMEÇAR?</p><h2>Aprenda Excel e já tenha os materiais para colocar o conhecimento em prática.</h2><p>Curso, planilhas, dashboards e templates reunidos em um único pacote.</p><a className="cta cta-light" href="#oferta">QUERO VER A OFERTA <Arrow /></a></div>
       </section>
 
-      <footer className="footer">
-        <div className="shell footer-top"><img src="/assets/logo-excel-avancado.png" alt="Excel Avançado" /><p>Curso online completo do básico ao avançado.</p><nav aria-label="Links legais"><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/termos-de-uso">Termos de Uso</a></nav></div>
-        <div className="shell footer-bottom"><span>© 2026 Excel Avançado. Todos os direitos reservados.</span><span>Obrigado por escolher o Excel Avançado. ❤</span></div>
+      <footer className="site-footer">
+        <div className="container footer-grid"><div><Logo footer /><p>Curso Excel Avançado com materiais para aprender, praticar e usar no dia a dia.</p></div><div className="footer-links"><a href="mailto:excelavancadoea@gmail.com">excelavancadoea@gmail.com</a><a href="/politica-de-privacidade">Política de Privacidade</a><a href="/termos-de-uso">Termos de Uso</a></div></div>
+        <div className="container footer-legal"><p>Este site não é afiliado ao Facebook, Instagram ou qualquer empresa do grupo Meta. Após sair dessas plataformas, a responsabilidade é exclusivamente deste site.</p><small>© {currentYear} Excel Avançado. Todos os direitos reservados.</small></div>
       </footer>
 
-      <button className={`mobile-sticky ${showSticky ? "show" : ""}`} type="button" onClick={openCheckout}>Quero começar <ArrowIcon /></button>
+      {sticky && <a className="mobile-sticky-cta" href="#oferta">VER OFERTA <Arrow /></a>}
 
-      {videoOpen && (
-        <div className="video-modal" role="dialog" aria-modal="true" aria-label="Vídeo de apresentação">
-          <button className="modal-backdrop" type="button" onClick={() => setVideoOpen(false)} aria-label="Fechar vídeo" />
-          <div className="modal-panel"><button className="modal-close" type="button" onClick={() => setVideoOpen(false)} aria-label="Fechar"><CloseIcon /></button><div className={`video-slot ${videoEmbedUrl ? "has-video" : ""}`}>{videoEmbedUrl ? <iframe src={videoEmbedUrl} title="Apresentação do curso Excel Avançado" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen /> : <><div className="slot-icon"><PlayIcon /></div><strong>Espaço preparado para o seu vídeo</strong><p>O player em 16:9 será colocado aqui quando você configurar o link.</p></>}</div></div>
+      {reviewOpen && (
+        <div className="review-modal" role="dialog" aria-modal="true" aria-label="Avaliação ampliada" onClick={() => setReviewOpen(null)}>
+          <button type="button" onClick={() => setReviewOpen(null)}>Fechar ×</button>
+          <img src={reviewOpen} alt="Avaliação ampliada" onClick={(event) => event.stopPropagation()} />
         </div>
       )}
 
-      {checkoutOpen && (
-        <div className="checkout-modal" role="dialog" aria-modal="true" aria-label="Conectar checkout">
-          <button className="modal-backdrop" type="button" onClick={() => setCheckoutOpen(false)} aria-label="Fechar" />
-          <div className="checkout-panel">
-            <button className="modal-close" type="button" onClick={() => setCheckoutOpen(false)} aria-label="Fechar"><CloseIcon /></button>
-            <span className="checkout-icon">EA</span><p className="section-kicker">BOTÃO DE COMPRA PREPARADO</p><h3>Falta apenas conectar o link do seu checkout.</h3><p>Quando você enviar o link da Kiwify, este botão levará o visitante diretamente para o pagamento.</p><button type="button" className="secondary-button" onClick={() => setCheckoutOpen(false)}>Entendi</button>
-          </div>
+      {checkoutNotice && (
+        <div className="checkout-modal" role="dialog" aria-modal="true" aria-label="Checkout não configurado" onClick={() => setCheckoutNotice(false)}>
+          <div onClick={(event) => event.stopPropagation()}><button type="button" onClick={() => setCheckoutNotice(false)}>×</button><h3>Checkout em configuração</h3><p>O link de compra ainda não está disponível nesta configuração do site.</p></div>
         </div>
       )}
     </main>

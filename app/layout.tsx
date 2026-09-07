@@ -9,11 +9,11 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://excelavancado.shop"),
-  title: "Excel Avançado | Curso + 75 mil planilhas editáveis",
-  description: "Curso Excel Avançado com aulas online, materiais de apoio e uma biblioteca com mais de 75 mil planilhas editáveis, dashboards e templates.",
+  title: "Excel Avançado | Curso + 50 mil planilhas editáveis",
+  description: "Curso Excel Avançado com materiais de apoio, 50 mil planilhas editáveis, dashboards e bônus digitais.",
   openGraph: {
-    title: "Excel Avançado | Curso + 75 mil planilhas",
-    description: "Aprenda Excel e receba uma biblioteca completa de planilhas, dashboards e materiais digitais.",
+    title: "Excel Avançado | Curso + 50 mil planilhas",
+    description: "Aprenda Excel e receba uma biblioteca com 50 mil planilhas, dashboards e materiais digitais.",
     url: "https://excelavancado.shop",
     siteName: "Excel Avançado",
     type: "website",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Excel Avançado | Curso + 75 mil planilhas",
+    title: "Excel Avançado | Curso + 50 mil planilhas",
     description: "Curso online de Excel com uma biblioteca completa de materiais editáveis.",
   },
 };

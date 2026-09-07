@@ -34,7 +34,7 @@ function Brand() {
 export function LandingPage() {
   const [openReview, setOpenReview] = useState<string | null>(null);
   const basicCheckout = process.env.NEXT_PUBLIC_CHECKOUT_BASICO?.trim();
-  const completeCheckout = process.env.NEXT_PUBLIC_CHECKOUT_COMPLETO?.trim() || process.env.NEXT_PUBLIC_CHECKOUT_URL?.trim();
+  const completeCheckout = process.env.NEXT_PUBLIC_CHECKOUT_COMPLETO?.trim();
 
   const go = (url?: string) => {
     if (url) window.location.href = url;
